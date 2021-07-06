@@ -1,4 +1,6 @@
+require 'byebug'
 class Piece
+    attr_accessor :pos ,:color, :board
 
     def initialize (color, board, pos)
         @color = color 
@@ -24,6 +26,12 @@ class Piece
 
     def symbol
         
+    end
+
+    def inspect
+        # "#<#{self.class}, pos: #{pos}, color: #{color}>"
+        symbol
+        # "hi"
     end
 
     private

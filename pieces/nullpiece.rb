@@ -1,9 +1,24 @@
+require 'singleton'
 require_relative "piece"
+require "byebug"
+
 
 class NullPiece < Piece
 
+    include Singleton
+
+    def initialize
+        # self.instance
+        # debugger
+        @color = :none
+    end
+
     def symbol
-        "[__]"
+        "_"
+    end
+
+    def moves
+        []
     end
 
 end
