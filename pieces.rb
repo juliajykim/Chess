@@ -1,3 +1,4 @@
+require 'colorize'
 require_relative 'pieces/bishop'
 require_relative 'pieces/king'
 require_relative 'pieces/knight'

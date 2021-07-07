@@ -11,52 +11,52 @@ class Board
         # fill_board
     end
 
-    def fill_board
-        board.each_with_index do |row, i|
-            row.each_with_index do |el, j|
-                set_back_row(i,:black) if i == 0
-                set_pawns(i,:black) if i == 1
+    # def fill_board
+    #     board.each_with_index do |row, i|
+    #         row.each_with_index do |el, j|
+    #             set_back_row(i, :yellow) if i == 0
+    #             set_pawns(i, :yellow) if i == 1
                 
-                @board[i][j] = null_piece if (2..5).to_a.include?(i)  
+    #             @board[i][j] = null_piece if (2..5).to_a.include?(i)  
 
-                set_pawns(i,:white) if i == 6
-                set_back_row(i,:white) if i == 7  
-            end
-        end
-    end
+    #             set_pawns(i, :blue) if i == 6
+    #             set_back_row(i, :blue) if i == 7  
+    #         end
+    #     end
+    # end
 
-    def set_back_row(row,color)
-        (0..7).each do |j|
-            if [0,7].include?(j) 
-                @board[row][j] = Rook.new(color, self, [row,j])
-            elsif [1,6].include?(j)
-                @board[row][j] = Knight.new(color, self, [row,j])
-            elsif [2,5].include?(j)
-                @board[row][j] = Bishop.new(color, self, [row,j])
-            elsif j == 3
-                @board[row][j] = Queen.new(color, self, [row,j])
-            elsif j == 4
-                @board[row][j] = King.new(color, self, [row,j])
-            end
-        end
-    end
+    # def set_back_row(row,color)
+    #     (0..7).each do |j|
+    #         if [0,7].include?(j) 
+    #             @board[row][j] = Rook.new(color, self, [row,j])
+    #         elsif [1,6].include?(j)
+    #             @board[row][j] = Knight.new(color, self, [row,j])
+    #         elsif [2,5].include?(j)
+    #             @board[row][j] = Bishop.new(color, self, [row,j])
+    #         elsif j == 3
+    #             @board[row][j] = Queen.new(color, self, [row,j])
+    #         elsif j == 4
+    #             @board[row][j] = King.new(color, self, [row,j])
+    #         end
+    #     end
+    # end
 
-    def set_pawns(row,color)
-        (0..7).each do |j|
-            @board[row][j] = Pawn.new(color, self, [row,j])
-        end
-    end
+    # def set_pawns(row,color)
+    #     (0..7).each do |j|
+    #         @board[row][j] = Pawn.new(color, self, [row,j])
+    #     end
+    # end
     
     def populate
         back_rows = [Rook, Knight, Bishop, Queen, King, Bishop, Knight, Rook]
         
         back_rows.each_with_index do |back_row_piece, idx|
-            @board[0][idx] = back_row_piece.new(:black, self, [0,idx])
-            @board[7][idx] = back_row_piece.new(:white, self, [7,idx])
+            @board[0][idx] = back_row_piece.new(:yellow, self, [0,idx])
+            @board[7][idx] = back_row_piece.new(:blue, self, [7,idx])
         end
 
-        8.times { |col| @board[1][col] = Pawn.new(:black, self, [1, col]) }
-        8.times { |col| @board[6][col] = Pawn.new(:white, self, [6, col]) }
+        8.times { |col| @board[1][col] = Pawn.new(:yellow, self, [1, col]) }
+        8.times { |col| @board[6][col] = Pawn.new(:blue, self, [6, col]) }
 
     end
 
