@@ -13,6 +13,10 @@ class NullPiece < Piece
         @color = :none
     end
 
+    def empty?
+        true
+    end
+
     def symbol
         "_"
     end

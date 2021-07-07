@@ -1,7 +1,16 @@
 require_relative "piece"
+require_relative "modules/slideable"
 
 class Queen < Piece
-    def symbol
-      "♛"  
-    end
+
+  include Slideable
+
+  def symbol
+    "♛"  
+  end
+
+  def move_dirs
+    horizontal_and_vertical_dirs += diagonal_dirs
+  end
+  
 end

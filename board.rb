@@ -91,7 +91,7 @@ class Board
 
         # row, col = pos 
         # (0..7).include?(row) && (0..7).include?(col)
-    
+        # debugger
         pos.all? { |coord| coord.between?(0, 7) }
     end
     
